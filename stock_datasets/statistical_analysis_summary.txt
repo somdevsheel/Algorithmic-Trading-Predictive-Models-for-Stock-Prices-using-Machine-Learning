@@ -1,0 +1,30 @@
+=================================================================
+STATISTICAL ANALYSIS SUMMARY
+=================================================================
+
+1. NORMALITY (Shapiro-Wilk)
+   All error distributions are non-normal (p < 0.05).
+   Non-parametric Wilcoxon tests are used for all comparisons.
+
+2. LEVENE TEST (Equal Variance)
+   Model error variances are significantly different (p < 0.05).
+   Further supports use of non-parametric tests.
+
+3. ONE-WAY ANOVA
+   F-test confirms a significant difference exists across the 5 models.
+   Pairwise testing is therefore justified.
+
+4. MODEL vs BASELINE (Naive)
+   Lowest mean abs error overall : Baseline (Naive)
+   Significantly BEATS baseline  : none
+   Significantly WORSE than base : ['Random Forest', 'Gradient Boosting', 'LSTM']
+   No significant difference     : ['Linear Regression']
+
+5. INTERPRETATION
+   The tree models (Random Forest, Gradient Boosting) have large errors
+   because they cannot extrapolate beyond the training price range, while
+   the test period sits at higher price levels.
+   Linear Regression tracks the price closely but does not significantly
+   beat the naive "tomorrow = today" benchmark, which is consistent with
+   near-random next-day direction (~50% accuracy in evaluation).
+=================================================================
